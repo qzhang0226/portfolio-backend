@@ -1,6 +1,5 @@
 const mongoose = require('mongoose'); 
 
-
 const imageSchema = mongoose.Schema({
     title: {
         type: String,
@@ -14,10 +13,10 @@ const imageSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    image: {
-        type: String,
-        required: false,
-    }
+    // postImage: {
+    //     type: String,
+    //     required: false,
+    // }
 });
 
 

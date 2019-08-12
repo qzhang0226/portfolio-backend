@@ -9,6 +9,7 @@ const app = express();
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
+// app.use('/images', express.static('images'));
 
 // Images
 const imageRoute = require('./apis/routes/images');
@@ -20,7 +21,7 @@ app.get('/', (req, res) => {
 })
 
 mongoose.connect(
-    process.env. DB_CONNCETION,
+    process.env.DB_CONNCETION,
     { useNewUrlParser: true }, 
     () => console.log('connected to DB')    
 );

@@ -33,7 +33,7 @@ exports.create_image = async (req, res) => {
     const image = new Images({
         title: req.body.title,
         description: req.body.description,
-        image: req.file.path,
+        // postImage: req.file.path,
     });
     try{
         const savedImage = await image.save();
