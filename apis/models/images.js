@@ -13,10 +13,10 @@ const imageSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    // postImage: {
-    //     type: String,
-    //     required: false,
-    // }
+    postImage: {
+        type: String,
+        required: false,
+    }
 });
 
 

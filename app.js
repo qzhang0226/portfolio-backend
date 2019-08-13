@@ -9,7 +9,7 @@ const app = express();
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
-// app.use('/images', express.static('images'));
+app.use('/images', express.static('images'));
 
 // Images
 const imageRoute = require('./apis/routes/images');
