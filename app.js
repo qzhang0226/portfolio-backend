@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use('/images', express.static('images'));
 
 // Images
-const imageRoute = require('./apis/routes/images');
+const imageRoute = require('./routes/images');
 app.use('/images', imageRoute);
 
 // ROUTES
