@@ -12,9 +12,17 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join('uploads')));
 
-// Images
+// About
 const aboutRoute = require('./routes/about');
 app.use('/about', aboutRoute);
+
+// Profile
+const profileRoute = require('./routes/profile');
+app.use('/profile', profileRoute);
+
+// Experience
+const experienceRoute = require('./routes/experience');
+app.use('/experience', experienceRoute);
 
 // ROUTES
 app.get('/', (req, res) => {
