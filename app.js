@@ -9,11 +9,11 @@ const app = express();
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/images', express.static('images'));
+app.use('/about', express.static('about'));
 
 // Images
-const imageRoute = require('./routes/images');
-app.use('/images', imageRoute);
+const imageRoute = require('./routes/about');
+app.use('/about', imageRoute);
 
 // ROUTES
 app.get('/', (req, res) => {
