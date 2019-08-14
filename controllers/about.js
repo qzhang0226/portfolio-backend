@@ -48,12 +48,13 @@ exports.about_get_all = async (req, res) => {
 }
 
 exports.create_about = async (req, res) => {
+    const url = req.protocol + "://" + req.get("host");
     const about = new About({
         title: req.body.title,
         description: req.body.description,
         header: req.body.header,
         content: req.body.content,
-        postImage: req.file.path,
+        postImage: url + "/uploads/" + req.file.filename,
     });
     try{
         const savedAbout = await about.save();

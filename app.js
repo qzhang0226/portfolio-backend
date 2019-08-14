@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -9,11 +10,11 @@ const app = express();
 // Middlewares
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/about', express.static('about'));
+app.use('/uploads', express.static(path.join('uploads')));
 
 // Images
-const imageRoute = require('./routes/about');
-app.use('/about', imageRoute);
+const aboutRoute = require('./routes/about');
+app.use('/about', aboutRoute);
 
 // ROUTES
 app.get('/', (req, res) => {
