@@ -19,7 +19,7 @@ const router = express.Router();
 
 router.get('/', ProfileController.profile_get_all)
       .post('/', upload.single('postImage'), ProfileController.create_profile)
-    //   .delete('/:profileId', ProfileController.delete_profile)
+      .delete('/:profileId', ProfileController.delete_profile)
     //   .patch('/:profileId', ProfileController.update_profile)
 
 module.exports = router;

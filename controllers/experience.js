@@ -22,7 +22,7 @@ exports.create_experience = async (req, res) => {
     const experience = new Experience({
         title: req.body.title,
         description: req.body.description,
-        duration: req.body.header,
+        duration: req.body.duration,
     });
     try{
         const savedExperience = await experience.save();

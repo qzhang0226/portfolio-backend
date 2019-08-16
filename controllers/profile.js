@@ -18,11 +18,9 @@ exports.profile_get_all = (req, res, next) => {
                     return next(err);
                 }
                 const allExperience = JSON.parse(body);
-                // const all = response.assign(allExperience);
-                console.log(typeof response)
+                const mergedBody = Object.assign(response, allExperience);
+                res.json(mergedBody)
             });
-        
-            // res.json(response)
         })
         .catch(err => {
             res.status(500).json({
@@ -43,5 +41,14 @@ exports.create_profile = async (req, res) => {
         res.json(savedProfile);
     } catch(err){
         res.json({message: err})
+    }
+}
+
+exports.delete_profile = async (req, res) => {
+    try{
+        const removedProfile = await Profile.deleteOne({ _id: req.params.profileId });
+        res.json(removedProfile);
+    }catch(err){
+        res.json({ message: err });
     }
 }
