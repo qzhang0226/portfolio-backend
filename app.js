@@ -28,6 +28,10 @@ app.use('/experience', experienceRoute);
 const projectRoute = require('./routes/project');
 app.use('/project', projectRoute);
 
+// Contact
+const contactRoute = require('./routes/contact');
+app.use('/contact', contactRoute);
+
 // ROUTES
 app.get('/', (req, res) => {
     res.send('We are on home!')
