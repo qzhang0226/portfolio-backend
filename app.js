@@ -24,6 +24,10 @@ app.use('/profile', profileRoute);
 const experienceRoute = require('./routes/experience');
 app.use('/experience', experienceRoute);
 
+// Project
+const projectRoute = require('./routes/project');
+app.use('/project', projectRoute);
+
 // ROUTES
 app.get('/', (req, res) => {
     res.send('We are on home!')

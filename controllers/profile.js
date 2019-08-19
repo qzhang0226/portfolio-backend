@@ -52,3 +52,22 @@ exports.delete_profile = async (req, res) => {
         res.json({ message: err });
     }
 }
+
+exports.update_profile = async (req, res) => {
+    const url = req.protocol + "://" + req.get("host");
+    Profile.updateOne({ _id: req.params.profileId }, { "$set": {
+                postImage: url + "/uploads/" + req.file.filename,
+                title: req.body.title,
+                subTitle: req.body.subTitle,
+            }})
+            .then(result => {
+                res.status(200).json({
+                    result
+                })
+            })
+            .catch(err => {
+                res.status(500).json({
+                    message: "Failed to update"
+                })
+            })
+};

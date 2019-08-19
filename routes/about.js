@@ -20,6 +20,6 @@ const router = express.Router();
 router.get('/', AboutController.about_get_all)
       .post('/', upload.single('postImage'), AboutController.create_about)
       .delete('/:aboutId', AboutController.delete_about)
-      .patch('/:aboutId', AboutController.update_about)
+      .patch('/:aboutId', upload.single('postImage'), AboutController.update_about)
 
 module.exports = router;
