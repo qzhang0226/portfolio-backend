@@ -12,6 +12,10 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join('uploads')));
 
+// Home
+// const homeRoute = require('./routes/home');
+// app.use('/home', homeRoute);
+
 // About
 const aboutRoute = require('./routes/about');
 app.use('/about', aboutRoute);

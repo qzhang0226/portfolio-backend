@@ -26,4 +26,4 @@ const aboutSchema = mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Images', aboutSchema);
+module.exports = mongoose.model('About', aboutSchema);
