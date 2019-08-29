@@ -9,7 +9,7 @@ exports.quotation_get_all = (req, res) => {
                     return item;
                 })
             }
-            res.status(200).json(response)
+            res.status(200).json(response);
         })
         .catch(err => {
             res.status(500).json({
@@ -41,7 +41,7 @@ exports.delete_quotation = async (req, res) => {
     }
 }
 
-exports.update_quotation = async (req, res) => {
+exports.update_quotation = async (req, res, next) => {
     try{
         const updatedQuotation = await Quotation.updateOne(
             { _id: req.params.quotationId }, 
@@ -52,6 +52,7 @@ exports.update_quotation = async (req, res) => {
             }}
         );
         res.status(200).json(updatedQuotation);
+        // next();
     }catch(err){
         res.status(500).json({ message: err })
     }
