@@ -5,14 +5,18 @@ const homeSchema = mongoose.Schema({
         type: Object,
         required: true,
     },
-    // profile: {
-    //     type: Object,
-    //     require: true,
-    // },
-    // project: {
-    //     type: Object,
-    //     require: true,
-    // },
+    profile: {
+        type: Object,
+        require: true,
+    },
+    project: {
+        type: Object,
+        require: true,
+    },
+    quotation: {
+        type: Object,
+        require: true,
+    },
     date: {
         type: Date,
         default: Date.now

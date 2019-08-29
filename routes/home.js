@@ -5,5 +5,6 @@ const HomeController = require('../controllers/home');
 const router = express.Router();
 
 router.get('/', HomeController.home_get_all)
+      .post('/', HomeController.create_home)
 
 module.exports = router;

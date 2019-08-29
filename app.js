@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join('uploads')));
 
 // Home
-// const homeRoute = require('./routes/home');
-// app.use('/home', homeRoute);
+const homeRoute = require('./routes/home');
+app.use('/home', homeRoute);
 
 // About
 const aboutRoute = require('./routes/about');
@@ -31,6 +31,10 @@ app.use('/experience', experienceRoute);
 // Project
 const projectRoute = require('./routes/project');
 app.use('/project', projectRoute);
+
+// Quotation
+const quoteRoute = require('./routes/quotation');
+app.use('/quotation', quoteRoute);
 
 // Contact
 const contactRoute = require('./routes/contact');

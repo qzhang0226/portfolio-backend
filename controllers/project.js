@@ -5,7 +5,7 @@ exports.project_get_all = (req, res) => {
         .exec()
         .then(items => {
             const response = {
-                data: items.map(item => {
+                projects: items.map(item => {
                     return item;
                 })
             }
