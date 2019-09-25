@@ -13,6 +13,10 @@ const projectSchema = mongoose.Schema({
         type: String,
         required: false,
     },
+    name:{
+        type: String,
+        require: true,
+    },
     date: {
         type: Date,
         default: Date.now

@@ -24,6 +24,7 @@ exports.create_project = async (req, res) => {
         title: req.body.title,
         description: req.body.description,
         postImage: url + "/uploads/" + req.file.filename,
+        name: req.body.name,
     });
     try{
         const savedProject = await project.save();
@@ -48,6 +49,7 @@ exports.update_project = async (req, res) => {
                 title: req.body.title,
                 description: req.body.description,
                 postImage: url + "/uploads/" + req.file.filename,
+                name: req.body.name,
             }})
             .then(result => {
                 res.status(200).json({
