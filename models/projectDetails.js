@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'); 
 
-const projectSchema = mongoose.Schema({
+const projectDetailsSchema = mongoose.Schema({
     title: {
         type: String,
         require: true,
@@ -10,8 +10,12 @@ const projectSchema = mongoose.Schema({
         require: true,
     },
     postImage: {
-        type: String,
+        type: Array,
         required: false,
+    },
+    keywords:{
+        type: String,
+        require: true,
     },
     name:{
         type: String,
@@ -23,4 +27,4 @@ const projectSchema = mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Project', projectSchema);
+module.exports = mongoose.model('ProjectDetails', projectDetailsSchema);

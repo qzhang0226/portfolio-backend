@@ -21,5 +21,8 @@ router.get('/', ProjectController.project_get_all)
       .post('/', upload.single('postImage'), ProjectController.create_project)
       .delete('/:projectId', ProjectController.delete_project)
       .patch('/:projectId', upload.single('postImage'), ProjectController.update_project)
+      .get('/:name', ProjectController.project_get_details)
+      .post('/:name', upload.array('postImage', 20), ProjectController.create_project_details)
+      .delete('/:projectId', ProjectController.delete_project_details)
 
 module.exports = router;

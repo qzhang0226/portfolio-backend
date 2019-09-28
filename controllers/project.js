@@ -1,4 +1,5 @@
 const Project = require('../models/project');
+const ProjectDetails = require('../models/projectDetails');
 
 exports.project_get_all = (req, res) => {
     Project.find()
@@ -62,3 +63,51 @@ exports.update_project = async (req, res) => {
                 })
             })
 };
+
+exports.project_get_details = (req, res) => {
+    ProjectDetails.find({ name: req.params.name })
+        .exec()
+        .then(items => {
+            return items.map(item => {
+                res.status(200).json(item)
+            })
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            })
+        })
+}
+
+exports.create_project_details = async (req, res) => {
+    const url = req.protocol + "://" + req.get("host");
+    const projectDetails = new ProjectDetails({
+        title: req.body.title,
+        description: req.body.description,
+        postImage: req.files.map(file => {
+            const imageInfo = {
+                name: file.filename,
+                url: url + "/uploads/" + file.filename
+            }
+            return imageInfo;
+        }),
+        // postImage: getPostImage(url, req.files),
+        keywords: req.body.keywords,
+        name: req.body.name,
+    });
+    try{
+        const savedProject = await projectDetails.save();
+        res.json(savedProject);
+    } catch(err){
+        res.json({message: err})
+    }
+}
+
+exports.delete_project_details = async (req, res) => {
+    try{
+        const removedProjectDetails = await ProjectDetails.deleteOne({ _id: req.params.projectId });
+        res.json(removedProjectDetails);
+    }catch(err){
+        res.json({ message: err });
+    }
+}
