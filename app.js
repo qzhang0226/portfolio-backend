@@ -40,6 +40,10 @@ app.use('/quotation', quoteRoute);
 const contactRoute = require('./routes/contact');
 app.use('/contact', contactRoute);
 
+// Blogs
+const blogsRoute = require('./routes/blogs');
+app.use('/blog', blogsRoute);
+
 // ROUTES
 app.get('/', (req, res) => {
     res.send('We are on home!')

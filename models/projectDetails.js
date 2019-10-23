@@ -21,6 +21,13 @@ const projectDetailsSchema = mongoose.Schema({
         type: String,
         require: true,
     },
+    youtubeUrl:{
+        type: String,
+    },
+    youtubeImg: {
+        type: String,
+        required: false,
+    },
     date: {
         type: Date,
         default: Date.now

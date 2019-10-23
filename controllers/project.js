@@ -81,10 +81,11 @@ exports.project_get_details = (req, res) => {
 
 exports.create_project_details = async (req, res) => {
     const url = req.protocol + "://" + req.get("host");
+    console.log(req.files)
     const projectDetails = new ProjectDetails({
         title: req.body.title,
         description: req.body.description,
-        postImage: req.files.map(file => {
+        postImage: req.files.postImage.map(file => {
             const imageInfo = {
                 name: file.filename,
                 url: url + "/uploads/" + file.filename
@@ -94,6 +95,10 @@ exports.create_project_details = async (req, res) => {
         // postImage: getPostImage(url, req.files),
         keywords: req.body.keywords,
         name: req.body.name,
+        youtubeUrl: req.body.youtubeUrl,
+        youtubeImg: url + "/uploads/" + req.files.youtubeImg.map(img => {
+            return img.filename
+        })
     });
     try{
         const savedProject = await projectDetails.save();

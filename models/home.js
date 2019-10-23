@@ -17,6 +17,10 @@ const homeSchema = mongoose.Schema({
         type: Object,
         require: true,
     },
+    blog: {
+        type: Object,
+        require: true,
+    },
     date: {
         type: Date,
         default: Date.now
