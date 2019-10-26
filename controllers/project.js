@@ -99,7 +99,7 @@ exports.create_project_details = async (req, res) => {
         youtubeImg: url + "/uploads/" + req.files.youtubeImg.map(img => {
             return img.filename
         })
-    });
+    }); 
     try{
         const savedProject = await projectDetails.save();
         res.json(savedProject);
