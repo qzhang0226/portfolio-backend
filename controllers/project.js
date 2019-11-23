@@ -98,7 +98,8 @@ exports.create_project_details = async (req, res) => {
         youtubeUrl: req.body.youtubeUrl,
         youtubeImg: url + "/uploads/" + req.files.youtubeImg.map(img => {
             return img.filename
-        })
+        }),
+        githubUrl: req.body.githubUrl,
     }); 
     try{
         const savedProject = await projectDetails.save();
