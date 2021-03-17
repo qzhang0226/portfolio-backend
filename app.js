@@ -53,8 +53,10 @@ app.get("/", (req, res) => {
   res.send("We are on home!");
 });
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }, () =>
-  console.log("connected to DB")
+mongoose.connect(
+  "mongodb+srv://dbUser:Cjn984869795@cluster0-rymjq.mongodb.net/jeeny-backend?retryWrites=true&w=1",
+  { useNewUrlParser: true },
+  () => console.log("connected to DB")
 );
 
 module.exports = app;
