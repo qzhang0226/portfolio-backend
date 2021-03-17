@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
 })
 
 mongoose.connect(
-    process.env.DB_CONNCETION,
+    process.env.MONGODB_URI,
     { useNewUrlParser: true }, 
     () => console.log('connected to DB')    
 );
