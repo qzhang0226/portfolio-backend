@@ -9,44 +9,41 @@ const app = express();
 
 // Middlewares
 app.use(cors());
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
 app.use(bodyParser.json());
-app.use("/uploads", express.static(path.join("uploads")));
+
+// app.use("/uploads", express.static(path.join("uploads")));
 
 // Home
-const homeRoute = require("./routes/home");
-app.use("/home", homeRoute);
+// const homeRoute = require("./routes/home");
+// app.use("/home", homeRoute);
 
 // About
-const aboutRoute = require("./routes/about");
-app.use("/about", aboutRoute);
+// const aboutRoute = require("./routes/about");
+// app.use("/about", aboutRoute);
 
 // Profile
-const profileRoute = require("./routes/profile");
-app.use("/profile", profileRoute);
+// const profileRoute = require("./routes/profile");
+// app.use("/profile", profileRoute);
 
 // Experience
-const experienceRoute = require("./routes/experience");
-app.use("/experience", experienceRoute);
+// const experienceRoute = require("./routes/experience");
+// app.use("/experience", experienceRoute);
 
 // Project
-const projectRoute = require("./routes/project");
-app.use("/project", projectRoute);
+// const projectRoute = require("./routes/project");
+// app.use("/project", projectRoute);
 
 // Quotation
-const quoteRoute = require("./routes/quotation");
-app.use("/quotation", quoteRoute);
+// const quoteRoute = require("./routes/quotation");
+// app.use("/quotation", quoteRoute);
 
 // Contact
 const contactRoute = require("./routes/contact");
 app.use("/contact", contactRoute);
 
 // Blogs
-const blogsRoute = require("./routes/blogs");
-app.use("/blog", blogsRoute);
+// const blogsRoute = require("./routes/blogs");
+// app.use("/blog", blogsRoute);
 
 // ROUTES
 app.get("/", (req, res) => {
@@ -54,8 +51,8 @@ app.get("/", (req, res) => {
 });
 
 mongoose.connect(
-  "mongodb+srv://dbUser:Cjn984869795@cluster0-rymjq.mongodb.net/jeeny-backend?retryWrites=true&w=1",
-  { useNewUrlParser: true },
+  "mongodb+srv://dbUser:Cjn984869795@cluster0.0dg73.gcp.mongodb.net/jennyBackend?retryWrites=true&w=majority",
+  { useNewUrlParser: true, useUnifiedTopology: true },
   () => console.log("connected to DB")
 );
 
