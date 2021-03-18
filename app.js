@@ -1,7 +1,7 @@
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv/config");
 
@@ -9,8 +9,17 @@ const app = express();
 
 // Middlewares
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+// Contact
+const contactRoute = require("./routes/contact");
+app.use("/contact", contactRoute);
+
+// ROUTES
+app.get("/", (req, res) => {
+  res.send("We are on home!");
+});
 // app.use("/uploads", express.static(path.join("uploads")));
 
 // Home
@@ -37,21 +46,13 @@ app.use(bodyParser.json());
 // const quoteRoute = require("./routes/quotation");
 // app.use("/quotation", quoteRoute);
 
-// Contact
-const contactRoute = require("./routes/contact");
-app.use("/contact", contactRoute);
-
 // Blogs
 // const blogsRoute = require("./routes/blogs");
 // app.use("/blog", blogsRoute);
 
-// ROUTES
-app.get("/", (req, res) => {
-  res.send("We are on home!");
-});
-
 mongoose.connect(
-  "mongodb+srv://dbUser:Cjn984869795@cluster0.0dg73.gcp.mongodb.net/jennyBackend?retryWrites=true&w=majority",
+  // process.env.DB_CONNCETION
+  "mongodb+srv://jenny:cjndeLAOg0226qi@jenny-backend.mwocm.mongodb.net/jennyBackend?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => console.log("connected to DB")
 );
