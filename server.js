@@ -6,4 +6,4 @@ const port = process.env.PORT || 3002;
 
 const server = http.createServer(app);
 
-server.listen(3002);
+server.listen(port);
