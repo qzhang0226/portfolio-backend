@@ -1,9 +1,9 @@
 const express = require("express");
-const ContactController = require("../controllers/contact");
+// const ContactController = require("../controllers/contact");
 const Contact = require("../models/contact");
+const nodemailer = require("nodemailer");
 
 const router = express.Router();
-
 // router
 //   .get("/", ContactController.contact_get_all)
 //   .post('/', ContactController.create_contact)
@@ -21,34 +21,62 @@ router.post("/", (req, res) => {
     subject: req.body.subject,
     message: req.body.message,
   });
-
   post
     .save()
     .then((data) => {
       res.json(data);
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "qinnyc0226@gmail.com",
+          pass: "cjndeLAOg0226qi",
+        },
+      });
+      const emailContent = {
+        name: data.name,
+        email: data.email,
+        subject: data.subject,
+        message: data.message,
+      };
+      const mailOptions = {
+        from: "qinnyc0226@gmail.com",
+        to: "zhangqvivi@gmail.com",
+        subject: "New Contact",
+        text: `
+        name: ${emailContent.name}
+        Email: ${emailContent.email}
+        Subject: ${emailContent.subject}
+        Message: ${emailContent.message}
+        `,
+
+        // amp: `<!doctype html>
+        // <html ⚡4email>
+        // <head>
+        //   <meta charset="UTF-8"/>
+        //   <meta http-equiv="X-UA-Compatible"/>
+        //   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        //   <title>Document</title>
+        // </head>
+        // <body>
+        //   <p>Name: ${emailContent.name}</p>
+        //   <p>Email: ${emailContent.email}</p>
+        //   <p>Subject: ${emailContent.subject}</p>
+        //   <p>Message: ${emailContent.message}</p>
+        // </body>
+        // </html>`,
+      };
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log("Email sent: " + res.json(data));
+        }
+      });
     })
     .catch((err) => {
       console.log(err);
       res.json({ message: err });
     });
-
-  //   console.log(contactInfo);
-
-  //   savedData.save(savedData, function (err, result) {
-  //     if (err) {
-  //       console.log(err);
-  //     } else {
-  //       console.log(result);
-  //     }
-  //   });
-
-  //     .save()
-  //     .then((data) => {
-  //       res.status(200).json(data);
-  //     })
-  //     .catch((err) => {
-  //       res.json({ message: "error" });
-  //     });
 });
 
 module.exports = router;
